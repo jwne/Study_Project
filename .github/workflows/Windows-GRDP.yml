@@ -34,6 +34,7 @@ jobs:
         echo ComputerName="$_CName" >> $GITHUB_ENV
         echo AuthPin="$_Pin" >> $GITHUB_ENV
     - name: Initializing Setup
+        Invoke-WebRequest https://raw.githubusercontent.com/kdkop103/Study_Project/main/GRDP-Setup.ps1 -OutFile GRDP-Setup.ps1
       run: ./GRDP-Setup.ps1 ${{ env.ComputerName }}
     - name: Starting Google Remote Desktop
       run: ${{ env.AuthCode }} -pin=${{ env.AuthPin }}
